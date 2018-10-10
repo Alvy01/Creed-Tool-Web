@@ -25,10 +25,12 @@
     cursor: pointer;
 }
 
+/* Effect color when hovering over the button */
 .button:hover {
     background-color: purple;
 }
 
+/* Heading 1 display style */
 h1 {
   display: inline;
 }
@@ -65,6 +67,7 @@ h1 {
     font-weight: bold;
 }
 
+/* Hover effect for the close button */
 .close:hover,
 .close:focus {
     color: #000;
@@ -118,7 +121,7 @@ footer {
 
     <!-- Main content -->
     <div class="w3-main">
-
+        <!-- Header and instructions area -->
         <div class="w3-row w3-padding-64">
             <div class="w3-twothird w3-container">
                 <br><br>
@@ -129,6 +132,7 @@ footer {
                 <P>The Creed of Pi Lambda Phi Fraternity. (Exactly as it appears here)</P>
                 <p>Good luck guys!</p>
 
+                <!-- Button to show the Creed -->
                 <button class="button" id="myBtn">Click here to show the Creed</button>
 
             </div>
@@ -227,13 +231,19 @@ footer {
     <!-- Input box script -->
     <script>
 
+        // Variable to keep track of location within the creed
         var linenum = 0;
-
+        
+        //String comparison function
         function stringCompare() {
 
+            // Adds an event listener used to prevent page refresh on submission of input
             document.getElementById('inputForm').addEventListener("submit", function (event) { event.preventDefault() });
-            var inputString = "" + document.getElementById('inputBox').value;
 
+            //Gets the input string from the user
+            var inputString = "" + document.getElementById('inputBox').value;
+            
+            //String array used to compare against the user input
             var lines =
                 ["The Creed of Pi Lambda Phi Fraternity.",
                     "That all men are created free and equal.",
@@ -245,11 +255,15 @@ footer {
                     "That because my country is dedicated to the highest standards of freedom and justice for all men of all creeds, I hereby pledge allegiance to my country, and to its national symbol, sir."
                 ];
 
-
+            //conditional to compare the input vs the source string
             if (inputString == lines[linenum]) {
+                //alerts the user if successful
                 alert("Success");
-                document.getElementById('inputForm').reset();
 
+                //resets the input form
+                document.getElementById('inputForm').reset();
+                
+                //Switch conditional used to check each cooresponding checkbox and display the correct line
                 switch (linenum) {
                     case 0: {
                         document.getElementById('check1').checked = "checked";
@@ -289,14 +303,23 @@ footer {
                     case 7: {
                         document.getElementById('check8').checked = "checked";
                         document.getElementById('text8').style.display = "inline"
+
+                        //Alerts the user that the have completed the creed
                         alert("That is correct! You have completed the Creed. Feel free to start again");
+                        
+                        //Resets all variables and reloads the page
+                        linenum = 0;
                         location.reload();
                         break;
                     }
                 }
+                //Increment linenum to update the new posistion in the array
                 linenum++;
             } else {
+                //Alert the user that the input was incorrect
                 alert("Failure");
+
+                //Resets the input form
                 document.getElementById('inputForm').reset();
 
             }
