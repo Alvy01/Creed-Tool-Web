@@ -10,79 +10,6 @@
     <link rel="stylesheet" href="custom-css-theme.css">
 </head>
 
-<style>
-    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
-
-/* Button layout */
-.button {
-    background-color:blueviolet;
-    border: none;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* Effect color when hovering over the button */
-.button:hover {
-    background-color: purple;
-}
-
-/* Heading 1 display style */
-h1 {
-  display: inline;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #ece8e8;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-/* Hover effect for the close button */
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Footer Layout */
-footer {
-    float: right;
-    height: 0px;
-    margin: 100px 0px 0px 0px;
-    text-align: right;
-    padding: 10px 30px;
-}
-</style>
 
 <body>
 
@@ -150,36 +77,49 @@ footer {
 
             <!-- Checkbox area -->
             <div class="w3-container w3-padding-64">
+
                 Line 1:
                 <input type="checkbox" id="check1" disabled="disabled">
                 <p id="text1" style="display:none">The Creed of Pi Lambda Phi Fraternity.</p><br>
+
                 Line 2:
                 <input type="checkbox" id="check2" disabled="disabled">
                 <p id="text2" style="display:none">That all men are created free and equal.</p><br>
+
                 Line 3:
                 <input type="checkbox" id="check3" disabled="disabled">
                 <p id="text3" style="display:none">That no society of men can flourish unless members of that society
-                    are endowed with the opportunities and privileges of freedom.</p><br>
+                    are endowed with the opportunities and privileges of freedom.
+                </p><br>
+
                 Line 4:
                 <input type="checkbox" id="check4" disabled="disabled">
                 <p id="text4" style="display:none">That freedom implies the elimination of prejudice.</p><br>
+
                 Line 5:
                 <input type="checkbox" id="check5" disabled="disabled">
                 <p id="text5" style="display:none">That the elimination of prejudice means a better understanding
-                    'twixt men.</p><br>
+                    'twixt men.
+                </p><br>
+
                 Line 6:
                 <input type="checkbox" id="check6" disabled="disabled">
                 <p id="text6" style="display:none">That it is incumbent upon me to fight for such freedom, even with my
-                    life.</p><br>
+                    life.
+                </p><br>
+                
                 Line 7:
                 <input type="checkbox" id="check7" disabled="disabled">
                 <p id="text7" style="display:none">That it is incumbent upon me, in my personal life, to be devoted to
-                    the highest standards of honesty and justice.</p><br>
+                    the highest standards of honesty and justice.
+                </p><br>
+                
                 Line 8:
                 <input type="checkbox" id="check8" disabled="disabled">
                 <p id="text8" style="display:none">That because my country is dedicated to the highest standards of
                     freedom and justice for all men of all creeds, I hereby pledge allegiance to my country, and to its
-                    national symbol, sir.</p><br>
+                    national symbol, sir.
+                </p><br>
             </div>
         </div>
 
@@ -192,140 +132,10 @@ footer {
     </div>
 
     <!-- Modal script -->
-    <script>
-        // Get the modal
-        var modal = document.getElementById('myModal');
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // Handle ESC key (key code 27)
-        document.addEventListener('keyup', function (e) {
-            if (e.keyCode == 27) {
-                modal.style.display = "none";
-            }
-        });
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-    <!-- Input box script -->
-    <script>
-
-        // Variable to keep track of location within the creed
-        var linenum = 0;
+    <script src="modalScript.js"></script> 
         
-        //String comparison function
-        function stringCompare() {
-
-            // Adds an event listener used to prevent page refresh on submission of input
-            document.getElementById('inputForm').addEventListener("submit", function (event) { event.preventDefault() });
-
-            //Gets the input string from the user
-            var inputString = "" + document.getElementById('inputBox').value;
-            
-            //String array used to compare against the user input
-            var lines =
-                ["The Creed of Pi Lambda Phi Fraternity.",
-                    "That all men are created free and equal.",
-                    "That no society of men can flourish unless members of that society are endowed with the opportunities and privileges of freedom.",
-                    "That freedom implies the elimination of prejudice.",
-                    "That the elimination of prejudice means a better understanding 'twixt men.",
-                    "That it is incumbent upon me to fight for such freedom, even with my life.",
-                    "That it is incumbent upon me, in my personal life, to be devoted to the highest standards of honesty and justice.",
-                    "That because my country is dedicated to the highest standards of freedom and justice for all men of all creeds, I hereby pledge allegiance to my country, and to its national symbol, sir."
-                ];
-
-            //conditional to compare the input vs the source string
-            if (inputString == lines[linenum]) {
-                //alerts the user if successful
-                alert("Success");
-
-                //resets the input form
-                document.getElementById('inputForm').reset();
-                
-                //Switch conditional used to check each cooresponding checkbox and display the correct line
-                switch (linenum) {
-                    case 0: {
-                        document.getElementById('check1').checked = "checked";
-                        document.getElementById('text1').style.display = "inline"
-                        break;
-                    }
-                    case 1: {
-                        document.getElementById('check2').checked = "checked";
-                        document.getElementById('text2').style.display = "inline"
-                        break;
-                    }
-                    case 2: {
-                        document.getElementById('check3').checked = "checked";
-                        document.getElementById('text3').style.display = "inline"
-                        break;
-                    }
-                    case 3: {
-                        document.getElementById('check4').checked = "checked";
-                        document.getElementById('text4').style.display = "inline"
-                        break;
-                    }
-                    case 4: {
-                        document.getElementById('check5').checked = "checked";
-                        document.getElementById('text5').style.display = "inline"
-                        break;
-                    }
-                    case 5: {
-                        document.getElementById('check6').checked = "checked";
-                        document.getElementById('text6').style.display = "inline"
-                        break;
-                    }
-                    case 6: {
-                        document.getElementById('check7').checked = "checked";
-                        document.getElementById('text7').style.display = "inline"
-                        break;
-                    }
-                    case 7: {
-                        document.getElementById('check8').checked = "checked";
-                        document.getElementById('text8').style.display = "inline"
-
-                        //Alerts the user that the have completed the creed
-                        alert("That is correct! You have completed the Creed. Feel free to start again");
-                        
-                        //Resets all variables and reloads the page
-                        linenum = 0;
-                        location.reload();
-                        break;
-                    }
-                }
-                //Increment linenum to update the new posistion in the array
-                linenum++;
-            } else {
-                //Alert the user that the input was incorrect
-                alert("Failure");
-
-                //Resets the input form
-                document.getElementById('inputForm').reset();
-
-            }
-
-        }
-
-    </script>
+    <!-- Input box script -->
+    <script src="stringScript.js"></script>
 
 </body>
 
