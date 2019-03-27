@@ -25,7 +25,7 @@
             //conditional to compare the input vs the source string
             if (inputString == lines[linenum]) {
                 //alerts the user if successful
-                alert("Success");
+                alert("That is correct!");
 
                 //resets the input form
                 document.getElementById('inputForm').reset();
@@ -84,7 +84,7 @@
                 linenum++;
             } else {
                 //Alert the user that the input was incorrect
-                alert("Failure");
+                alert("That is not correct, try again");
 
                 //Resets the input form
                 document.getElementById('inputForm').reset();
